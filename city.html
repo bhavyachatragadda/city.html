@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Time Alert</title>
+</head>
+<body>
+    <h1>Select a City</h1>
+    <select id="city-select">
+        <option value="Europe/Paris">Paris 🇫🇷</option>
+        <option value="Asia/Tokyo">Tokyo 🇯🇵</option>
+        <option value="Australia/Sydney">Sydney 🇦🇺</option>
+    </select>
+
+    <script>
+        document.getElementById('city-select').addEventListener('change', function() {
+            const city = this.value;
+            const options = { timeZone: city, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+            const formatter = new Intl.DateTimeFormat([], options);
+            const dateTimeString = formatter.format(new Date());
+            alert(`It is ${dateTimeString} in ${city}`);
+        });
+    </script>
+</body>
+</html>
